@@ -113,8 +113,9 @@
     padding: clamp(4.5rem, 12vh, 7rem) var(--v-gutter) clamp(2.5rem, 7vh, 4.5rem); }
   .vz__head { grid-column: 1; max-width: 34rem; }
   .vz__head .v-label { display: block; margin-bottom: var(--v-3); color: var(--v-accent); }
-  .vz__rep { grid-column: 1; grid-row: 2; position: relative; align-self: center; min-height: 12rem; }
-  .vz__rep > div { position: absolute; left: 0; top: 0; max-width: 32rem; }
+  /* шаги лежат в одной ячейке сетки: блок по высоте равен самому длинному шагу и не наезжает на кнопку */
+  .vz__rep { grid-column: 1; grid-row: 2; display: grid; align-self: center; align-items: start; padding-block: var(--v-4); }
+  .vz__rep > div { grid-area: 1 / 1; max-width: 32rem; }
   .vz__step { display: inline-flex; align-items: center; gap: .55em; font-size: var(--v-t-xs); letter-spacing: var(--v-track-wide); text-transform: uppercase; color: var(--v-accent); font-weight: 600; margin-bottom: var(--v-3); }
   .vz__step i { font-style: normal; font-variant-numeric: tabular-nums; color: var(--v-ink-soft); }
   .vz__rep h3 { font-family: var(--v-font-display); font-weight: var(--v-display-weight); font-size: var(--v-t-2xl); line-height: 1.04; text-wrap: balance; margin-bottom: var(--v-3); }
@@ -148,7 +149,7 @@
     .timer__num { font-size: 1.8rem; }
     .timer__unit { font-size: .68rem; margin-top: .2rem; }
     .vz__legend { display: none; }
-    .vz__rep { grid-row: 3; align-self: start; min-height: 9.5rem; margin-top: var(--v-4); }
+    .vz__rep { grid-row: 3; align-self: start; margin-top: var(--v-4); padding-block: 0; }
     .vz__rep h3 { font-size: var(--v-t-lg); margin-bottom: var(--v-2); }
     .vz__rep p { font-size: .95rem; }
     .vz__after { grid-row: 4; }
@@ -278,8 +279,8 @@
     #process { height: auto; }
     #process [data-v-stage] { position: relative; height: auto; min-height: 100svh; }
     .vz { height: auto; row-gap: var(--v-6); }
-    .vz__rep { min-height: 0; display: grid; gap: var(--v-6); }
-    .vz__rep > div { position: static; }
+    .vz__rep { gap: var(--v-6); }
+    .vz__rep > div { grid-area: auto; }
     .timer { --p: 1 !important; } /* таймер на финише */
   }
 
